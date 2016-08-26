@@ -70,7 +70,7 @@ describe("Character Set Shortcuts", function() {
     //   vertical tab     (\v)
     // or [ \t\n\r\f\v]
 
-    var fixThisPattern = /^___$/;
+    var fixThisPattern = /[\w\s][\w\s][\w\s]$/;
 
     expect( '   '  ).toMatch(fixThisPattern);
     expect( 'x\ny' ).toMatch(fixThisPattern);
@@ -85,14 +85,14 @@ describe("Character Set Shortcuts", function() {
     // /\S/ is the same as /[^\s]/
     // /\S/ is NOT the same as /[\w\d]/ - why?
 
-    var whatStringFitsThePattern = "___";
+    var whatStringFitsThePattern = '...';
 
     expect( whatStringFitsThePattern ).toMatch(/^[\S][\S][\S]$/);
     expect( whatStringFitsThePattern ).toMatch(/^[^\w\d][^\w\d][^\w\d]$/);
   });
 
   it('character set shortcuts can be used inside [ ]', function() {
-    var fixThisPattern = /^___$/;
+    var fixThisPattern = /^[\w\s][\w\d][\w\s]$/;
 
     expect( 'Dog' ).toMatch(fixThisPattern);
     expect( ' 2 ' ).toMatch(fixThisPattern);
